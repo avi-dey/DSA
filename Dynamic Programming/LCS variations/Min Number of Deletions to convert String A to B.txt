@@ -1,0 +1,61 @@
+// https://leetcode.com/problems/delete-operation-for-two-strings/description/
+
+
+//unoptimized tabulation - Java
+class Solution {
+    public int minDistance(String s1, String s2) {
+        int m = s1.length();
+        int n = s2.length();
+
+        int[][] t = new int[m+1][n+1];
+
+        //initialisation
+        for(int i = 0; i <= m; i++) t[i][0] = i;
+        for(int i = 0; i <= n; i++) t[0][i] = i;
+
+        //decision tree
+        for(int i = 1; i <= m; i++) {
+            for(int j = 1; j <= n; j++) {
+                if(s1.charAt(i-1) == s2.charAt(j-1)) {
+                    t[i][j] = t[i-1][j-1];
+                }
+                else {
+                    t[i][j] = 1 + Math.min(t[i-1][j], t[i][j-1]);
+                }
+            }
+        }
+        return t[m][n];
+    }
+}
+
+// optimized space Tabulation - Java
+class Solution {
+    //optimized tabulation - O(n) space because we are using only 1d arrays
+    public int minDistance(String s1, String s2) {
+        int m = s1.length();
+        int n = s2.length();
+
+        // instead of using a 2d array, we are using two 1d arrays
+        int[] prev = new int[n+1];       
+
+        //initialisation
+        for(int i = 0; i <= n; i++) prev[i] = i;
+
+        //decision tree
+        for(int i = 1; i <= m; i++) {
+            int[] curr = new int[n+1];
+            curr[0] = i; // on spot initialisation
+            for(int j = 1; j <= n; j++) {
+                if(s1.charAt(i-1) == s2.charAt(j-1)) {
+                    curr[j] =  prev[j-1];
+                }
+                else {
+                    curr[j] = 1 + Math.min(curr[j-1], prev[j]);
+                }
+            }
+            prev = curr;
+        }
+
+        return prev[n];
+    }
+}

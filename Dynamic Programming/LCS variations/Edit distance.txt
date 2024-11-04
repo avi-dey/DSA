@@ -1,6 +1,7 @@
+72. Edit Distance
 https://leetcode.com/problems/edit-distance/description/
 
-// tabulation solution
+// tabulation solution - Java
 class Solution {
     public int minDistance(String s1, String s2) {
         //tabulation
@@ -33,7 +34,7 @@ class Solution {
 }
 
 
-//memo solution
+// memo solution - Java
 class Solution {
     String s1;
     String s2;

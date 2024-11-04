@@ -7,7 +7,7 @@ Dynamic Programming (DP) on strings is a crucial area in computer science, parti
    - **Applications**: It is used in version control systems to find differences between files, DNA sequence alignment, and more.
    - **DP Approach**: A 2D array is used to store solutions to subproblems, where `dp[i][j]` represents the length of the LCS of the first `i` characters of the first string and the first `j` characters of the second string.
 
-## 2. Longest Palindromic Subsequence
+## 2. Longest Palindromic Subsequence --done
    - **Problem**: Given a string, find the longest subsequence that is also a palindrome.
    - **Applications**: Useful in computational biology and text analysis.
    - **DP Approach**: A 2D table is used where `dp[i][j]` represents the length of the longest palindromic subsequence in the substring starting at index `i` and ending at `j`.
